@@ -1,0 +1,8 @@
+nimTitle	hb_ot_name	harfbuzz/hb_ot_name.html	module harfbuzz/hb_ot_name		0
+nim	hb_ot_name_id_predefined_t	harfbuzz/hb_ot_name.html#hb_ot_name_id_predefined_t	enum hb_ot_name_id_predefined_t		15
+nim	hb_ot_name_id_t	harfbuzz/hb_ot_name.html#hb_ot_name_id_t	type hb_ot_name_id_t		43
+nim	hb_ot_name_entry_t	harfbuzz/hb_ot_name.html#hb_ot_name_entry_t	object hb_ot_name_entry_t		45
+nim	hb_ot_name_list_names	harfbuzz/hb_ot_name.html#hb_ot_name_list_names,ptr.hb_face_t,ptr.cuint	proc hb_ot_name_list_names(face: ptr hb_face_t; num_entries: ptr cuint): ptr hb_ot_name_entry_t		52
+nim	hb_ot_name_get_utf8	harfbuzz/hb_ot_name.html#hb_ot_name_get_utf8,ptr.hb_face_t,hb_ot_name_id_t,hb_language_t,ptr.cuint,cstring	proc hb_ot_name_get_utf8(face: ptr hb_face_t; name_id: hb_ot_name_id_t;\n                    language: hb_language_t; text_size: ptr cuint; text: cstring): cuint		54
+nim	hb_ot_name_get_utf16	harfbuzz/hb_ot_name.html#hb_ot_name_get_utf16,ptr.hb_face_t,hb_ot_name_id_t,hb_language_t,ptr.cuint,ptr.uint16	proc hb_ot_name_get_utf16(face: ptr hb_face_t; name_id: hb_ot_name_id_t;\n                     language: hb_language_t; text_size: ptr cuint;\n                     text: ptr uint16): cuint		57
+nim	hb_ot_name_get_utf32	harfbuzz/hb_ot_name.html#hb_ot_name_get_utf32,ptr.hb_face_t,hb_ot_name_id_t,hb_language_t,ptr.cuint,ptr.uint32	proc hb_ot_name_get_utf32(face: ptr hb_face_t; name_id: hb_ot_name_id_t;\n                     language: hb_language_t; text_size: ptr cuint;\n                     text: ptr uint32): cuint		60

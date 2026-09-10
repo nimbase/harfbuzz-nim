@@ -1,0 +1,4 @@
+nimTitle	hb_subset_serialize	harfbuzz/hb_subset_serialize.html	module harfbuzz/hb_subset_serialize		0
+nim	hb_subset_serialize_link_t	harfbuzz/hb_subset_serialize.html#hb_subset_serialize_link_t	object hb_subset_serialize_link_t		17
+nim	hb_subset_serialize_object_t	harfbuzz/hb_subset_serialize.html#hb_subset_serialize_object_t	object hb_subset_serialize_object_t		22
+nim	hb_subset_serialize_or_fail	harfbuzz/hb_subset_serialize.html#hb_subset_serialize_or_fail,hb_tag_t,ptr.hb_subset_serialize_object_t,cuint	proc hb_subset_serialize_or_fail(table_tag: hb_tag_t;\n                            hb_objects: ptr hb_subset_serialize_object_t;\n                            num_hb_objs: cuint): ptr hb_blob_t		32

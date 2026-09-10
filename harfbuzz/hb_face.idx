@@ -1,0 +1,36 @@
+nimTitle	hb_face	harfbuzz/hb_face.html	module harfbuzz/hb_face		0
+nim	hb_face_t	harfbuzz/hb_face.html#hb_face_t	object hb_face_t		19
+nim	hb_reference_table_func_t	harfbuzz/hb_face.html#hb_reference_table_func_t	type hb_reference_table_func_t		21
+nim	hb_get_table_tags_func_t	harfbuzz/hb_face.html#hb_get_table_tags_func_t	type hb_get_table_tags_func_t		25
+nim	hb_face_count	harfbuzz/hb_face.html#hb_face_count,ptr.hb_blob_t	proc hb_face_count(blob: ptr hb_blob_t): cuint		32
+nim	hb_face_create	harfbuzz/hb_face.html#hb_face_create,ptr.hb_blob_t,cuint	proc hb_face_create(blob: ptr hb_blob_t; index: cuint): ptr hb_face_t		33
+nim	hb_face_create_or_fail	harfbuzz/hb_face.html#hb_face_create_or_fail,ptr.hb_blob_t,cuint	proc hb_face_create_or_fail(blob: ptr hb_blob_t; index: cuint): ptr hb_face_t		34
+nim	hb_face_create_or_fail_using	harfbuzz/hb_face.html#hb_face_create_or_fail_using,ptr.hb_blob_t,cuint,cstring	proc hb_face_create_or_fail_using(blob: ptr hb_blob_t; index: cuint;\n                             loader_name: cstring): ptr hb_face_t		36
+nim	hb_face_create_from_file_or_fail	harfbuzz/hb_face.html#hb_face_create_from_file_or_fail,cstring,cuint	proc hb_face_create_from_file_or_fail(file_name: cstring; index: cuint): ptr hb_face_t		38
+nim	hb_face_create_from_file_or_fail_using	harfbuzz/hb_face.html#hb_face_create_from_file_or_fail_using,cstring,cuint,cstring	proc hb_face_create_from_file_or_fail_using(file_name: cstring; index: cuint;\n                                       loader_name: cstring): ptr hb_face_t		40
+nim	hb_face_list_loaders	harfbuzz/hb_face.html#hb_face_list_loaders	proc hb_face_list_loaders(): ptr cstring		43
+nim	hb_face_create_for_tables	harfbuzz/hb_face.html#hb_face_create_for_tables,hb_reference_table_func_t,pointer,hb_destroy_func_t	proc hb_face_create_for_tables(reference_table_func: hb_reference_table_func_t;\n                          user_data: pointer; destroy: hb_destroy_func_t): ptr hb_face_t		44
+nim	hb_face_get_empty	harfbuzz/hb_face.html#hb_face_get_empty	proc hb_face_get_empty(): ptr hb_face_t		47
+nim	hb_face_reference	harfbuzz/hb_face.html#hb_face_reference,ptr.hb_face_t	proc hb_face_reference(face: ptr hb_face_t): ptr hb_face_t		48
+nim	hb_face_destroy	harfbuzz/hb_face.html#hb_face_destroy,ptr.hb_face_t	proc hb_face_destroy(face: ptr hb_face_t)		49
+nim	hb_face_set_user_data	harfbuzz/hb_face.html#hb_face_set_user_data,ptr.hb_face_t,ptr.hb_user_data_key_t,pointer,hb_destroy_func_t,hb_bool_t	proc hb_face_set_user_data(face: ptr hb_face_t; key: ptr hb_user_data_key_t;\n                      data: pointer; destroy: hb_destroy_func_t;\n                      replace: hb_bool_t): hb_bool_t		50
+nim	hb_face_get_user_data	harfbuzz/hb_face.html#hb_face_get_user_data,ptr.hb_face_t,ptr.hb_user_data_key_t	proc hb_face_get_user_data(face: ptr hb_face_t; key: ptr hb_user_data_key_t): pointer		54
+nim	hb_face_make_immutable	harfbuzz/hb_face.html#hb_face_make_immutable,ptr.hb_face_t	proc hb_face_make_immutable(face: ptr hb_face_t)		56
+nim	hb_face_is_immutable	harfbuzz/hb_face.html#hb_face_is_immutable,ptr.hb_face_t	proc hb_face_is_immutable(face: ptr hb_face_t): hb_bool_t		57
+nim	hb_face_reference_table	harfbuzz/hb_face.html#hb_face_reference_table,ptr.hb_face_t,hb_tag_t	proc hb_face_reference_table(face: ptr hb_face_t; tag: hb_tag_t): ptr hb_blob_t		58
+nim	hb_face_reference_blob	harfbuzz/hb_face.html#hb_face_reference_blob,ptr.hb_face_t	proc hb_face_reference_blob(face: ptr hb_face_t): ptr hb_blob_t		60
+nim	hb_face_set_index	harfbuzz/hb_face.html#hb_face_set_index,ptr.hb_face_t,cuint	proc hb_face_set_index(face: ptr hb_face_t; index: cuint)		61
+nim	hb_face_get_index	harfbuzz/hb_face.html#hb_face_get_index,ptr.hb_face_t	proc hb_face_get_index(face: ptr hb_face_t): cuint		62
+nim	hb_face_set_upem	harfbuzz/hb_face.html#hb_face_set_upem,ptr.hb_face_t,cuint	proc hb_face_set_upem(face: ptr hb_face_t; upem: cuint)		63
+nim	hb_face_get_upem	harfbuzz/hb_face.html#hb_face_get_upem,ptr.hb_face_t	proc hb_face_get_upem(face: ptr hb_face_t): cuint		64
+nim	hb_face_set_glyph_count	harfbuzz/hb_face.html#hb_face_set_glyph_count,ptr.hb_face_t,cuint	proc hb_face_set_glyph_count(face: ptr hb_face_t; glyph_count: cuint)		65
+nim	hb_face_get_glyph_count	harfbuzz/hb_face.html#hb_face_get_glyph_count,ptr.hb_face_t	proc hb_face_get_glyph_count(face: ptr hb_face_t): cuint		66
+nim	hb_face_set_get_table_tags_func	harfbuzz/hb_face.html#hb_face_set_get_table_tags_func,ptr.hb_face_t,hb_get_table_tags_func_t,pointer,hb_destroy_func_t	proc hb_face_set_get_table_tags_func(face: ptr hb_face_t;\n                                func: hb_get_table_tags_func_t;\n                                user_data: pointer; destroy: hb_destroy_func_t)		67
+nim	hb_face_get_table_tags	harfbuzz/hb_face.html#hb_face_get_table_tags,ptr.hb_face_t,cuint,ptr.cuint,ptr.hb_tag_t	proc hb_face_get_table_tags(face: ptr hb_face_t; start_offset: cuint;\n                       table_count: ptr cuint; table_tags: ptr hb_tag_t): cuint		71
+nim	hb_face_collect_unicodes	harfbuzz/hb_face.html#hb_face_collect_unicodes,ptr.hb_face_t,ptr.hb_set_t	proc hb_face_collect_unicodes(face: ptr hb_face_t; out_set: ptr hb_set_t)		74
+nim	hb_face_collect_nominal_glyph_mapping	harfbuzz/hb_face.html#hb_face_collect_nominal_glyph_mapping,ptr.hb_face_t,ptr.hb_map_t,ptr.hb_set_t	proc hb_face_collect_nominal_glyph_mapping(face: ptr hb_face_t;\n                                      mapping: ptr hb_map_t;\n                                      unicodes: ptr hb_set_t)		75
+nim	hb_face_collect_variation_selectors	harfbuzz/hb_face.html#hb_face_collect_variation_selectors,ptr.hb_face_t,ptr.hb_set_t	proc hb_face_collect_variation_selectors(face: ptr hb_face_t; out_set: ptr hb_set_t)		78
+nim	hb_face_collect_variation_unicodes	harfbuzz/hb_face.html#hb_face_collect_variation_unicodes,ptr.hb_face_t,hb_codepoint_t,ptr.hb_set_t	proc hb_face_collect_variation_unicodes(face: ptr hb_face_t;\n                                   variation_selector: hb_codepoint_t;\n                                   out_set: ptr hb_set_t)		80
+nim	hb_face_builder_create	harfbuzz/hb_face.html#hb_face_builder_create	proc hb_face_builder_create(): ptr hb_face_t		83
+nim	hb_face_builder_add_table	harfbuzz/hb_face.html#hb_face_builder_add_table,ptr.hb_face_t,hb_tag_t,ptr.hb_blob_t	proc hb_face_builder_add_table(face: ptr hb_face_t; tag: hb_tag_t;\n                          blob: ptr hb_blob_t): hb_bool_t		84
+nim	hb_face_builder_sort_tables	harfbuzz/hb_face.html#hb_face_builder_sort_tables,ptr.hb_face_t,ptr.hb_tag_t	proc hb_face_builder_sort_tables(face: ptr hb_face_t; tags: ptr hb_tag_t)		86

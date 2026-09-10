@@ -1,0 +1,24 @@
+nimTitle	hb_map	harfbuzz/hb_map.html	module harfbuzz/hb_map		0
+nim	HB_MAP_VALUE_INVALID	harfbuzz/hb_map.html#HB_MAP_VALUE_INVALID	const HB_MAP_VALUE_INVALID		15
+nim	hb_map_t	harfbuzz/hb_map.html#hb_map_t	object hb_map_t		18
+nim	hb_map_create	harfbuzz/hb_map.html#hb_map_create	proc hb_map_create(): ptr hb_map_t		22
+nim	hb_map_get_empty	harfbuzz/hb_map.html#hb_map_get_empty	proc hb_map_get_empty(): ptr hb_map_t		23
+nim	hb_map_reference	harfbuzz/hb_map.html#hb_map_reference,ptr.hb_map_t	proc hb_map_reference(map: ptr hb_map_t): ptr hb_map_t		24
+nim	hb_map_destroy	harfbuzz/hb_map.html#hb_map_destroy,ptr.hb_map_t	proc hb_map_destroy(map: ptr hb_map_t)		25
+nim	hb_map_set_user_data	harfbuzz/hb_map.html#hb_map_set_user_data,ptr.hb_map_t,ptr.hb_user_data_key_t,pointer,hb_destroy_func_t,hb_bool_t	proc hb_map_set_user_data(map: ptr hb_map_t; key: ptr hb_user_data_key_t;\n                     data: pointer; destroy: hb_destroy_func_t;\n                     replace: hb_bool_t): hb_bool_t		26
+nim	hb_map_get_user_data	harfbuzz/hb_map.html#hb_map_get_user_data,ptr.hb_map_t,ptr.hb_user_data_key_t	proc hb_map_get_user_data(map: ptr hb_map_t; key: ptr hb_user_data_key_t): pointer		29
+nim	hb_map_allocation_successful	harfbuzz/hb_map.html#hb_map_allocation_successful,ptr.hb_map_t	proc hb_map_allocation_successful(map: ptr hb_map_t): hb_bool_t		31
+nim	hb_map_copy	harfbuzz/hb_map.html#hb_map_copy,ptr.hb_map_t	proc hb_map_copy(map: ptr hb_map_t): ptr hb_map_t		32
+nim	hb_map_clear	harfbuzz/hb_map.html#hb_map_clear,ptr.hb_map_t	proc hb_map_clear(map: ptr hb_map_t)		33
+nim	hb_map_is_empty	harfbuzz/hb_map.html#hb_map_is_empty,ptr.hb_map_t	proc hb_map_is_empty(map: ptr hb_map_t): hb_bool_t		34
+nim	hb_map_get_population	harfbuzz/hb_map.html#hb_map_get_population,ptr.hb_map_t	proc hb_map_get_population(map: ptr hb_map_t): cuint		35
+nim	hb_map_is_equal	harfbuzz/hb_map.html#hb_map_is_equal,ptr.hb_map_t,ptr.hb_map_t	proc hb_map_is_equal(map: ptr hb_map_t; other: ptr hb_map_t): hb_bool_t		36
+nim	hb_map_hash	harfbuzz/hb_map.html#hb_map_hash,ptr.hb_map_t	proc hb_map_hash(map: ptr hb_map_t): cuint		37
+nim	hb_map_set	harfbuzz/hb_map.html#hb_map_set,ptr.hb_map_t,hb_codepoint_t,hb_codepoint_t	proc hb_map_set(map: ptr hb_map_t; key: hb_codepoint_t; value: hb_codepoint_t)		38
+nim	hb_map_get	harfbuzz/hb_map.html#hb_map_get,ptr.hb_map_t,hb_codepoint_t	proc hb_map_get(map: ptr hb_map_t; key: hb_codepoint_t): hb_codepoint_t		40
+nim	hb_map_del	harfbuzz/hb_map.html#hb_map_del,ptr.hb_map_t,hb_codepoint_t	proc hb_map_del(map: ptr hb_map_t; key: hb_codepoint_t)		41
+nim	hb_map_has	harfbuzz/hb_map.html#hb_map_has,ptr.hb_map_t,hb_codepoint_t	proc hb_map_has(map: ptr hb_map_t; key: hb_codepoint_t): hb_bool_t		42
+nim	hb_map_update	harfbuzz/hb_map.html#hb_map_update,ptr.hb_map_t,ptr.hb_map_t	proc hb_map_update(map: ptr hb_map_t; other: ptr hb_map_t)		43
+nim	hb_map_next	harfbuzz/hb_map.html#hb_map_next,ptr.hb_map_t,ptr.cint,ptr.hb_codepoint_t,ptr.hb_codepoint_t	proc hb_map_next(map: ptr hb_map_t; idx: ptr cint; key: ptr hb_codepoint_t;\n            value: ptr hb_codepoint_t): hb_bool_t		44
+nim	hb_map_keys	harfbuzz/hb_map.html#hb_map_keys,ptr.hb_map_t,ptr.hb_set_t	proc hb_map_keys(map: ptr hb_map_t; keys: ptr hb_set_t)		47
+nim	hb_map_values	harfbuzz/hb_map.html#hb_map_values,ptr.hb_map_t,ptr.hb_set_t	proc hb_map_values(map: ptr hb_map_t; values: ptr hb_set_t)		48

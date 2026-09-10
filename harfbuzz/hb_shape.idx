@@ -1,0 +1,4 @@
+nimTitle	hb_shape	harfbuzz/hb_shape.html	module harfbuzz/hb_shape		0
+nim	hb_shape	harfbuzz/hb_shape.html#hb_shape,ptr.hb_font_t,ptr.hb_buffer_t,ptr.hb_feature_t,cuint	proc hb_shape(font: ptr hb_font_t; buffer: ptr hb_buffer_t;\n         features: ptr hb_feature_t; num_features: cuint)		21
+nim	hb_shape_full	harfbuzz/hb_shape.html#hb_shape_full,ptr.hb_font_t,ptr.hb_buffer_t,ptr.hb_feature_t,cuint,ptr.cstring	proc hb_shape_full(font: ptr hb_font_t; buffer: ptr hb_buffer_t;\n              features: ptr hb_feature_t; num_features: cuint;\n              shaper_list: ptr cstring): hb_bool_t		23
+nim	hb_shape_list_shapers	harfbuzz/hb_shape.html#hb_shape_list_shapers	proc hb_shape_list_shapers(): ptr cstring		26

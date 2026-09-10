@@ -1,0 +1,19 @@
+nimTitle	hb_blob	harfbuzz/hb_blob.html	module harfbuzz/hb_blob		0
+nim	hb_memory_mode_t	harfbuzz/hb_blob.html#hb_memory_mode_t	enum hb_memory_mode_t		13
+nim	hb_blob_t	harfbuzz/hb_blob.html#hb_blob_t	object hb_blob_t		19
+nim	hb_blob_create	harfbuzz/hb_blob.html#hb_blob_create,cstring,cuint,hb_memory_mode_t,pointer,hb_destroy_func_t	proc hb_blob_create(data: cstring; length: cuint; mode: hb_memory_mode_t;\n               user_data: pointer; destroy: hb_destroy_func_t): ptr hb_blob_t		23
+nim	hb_blob_create_or_fail	harfbuzz/hb_blob.html#hb_blob_create_or_fail,cstring,cuint,hb_memory_mode_t,pointer,hb_destroy_func_t	proc hb_blob_create_or_fail(data: cstring; length: cuint; mode: hb_memory_mode_t;\n                       user_data: pointer; destroy: hb_destroy_func_t): ptr hb_blob_t		26
+nim	hb_blob_create_from_file	harfbuzz/hb_blob.html#hb_blob_create_from_file,cstring	proc hb_blob_create_from_file(file_name: cstring): ptr hb_blob_t		29
+nim	hb_blob_create_from_file_or_fail	harfbuzz/hb_blob.html#hb_blob_create_from_file_or_fail,cstring	proc hb_blob_create_from_file_or_fail(file_name: cstring): ptr hb_blob_t		30
+nim	hb_blob_create_sub_blob	harfbuzz/hb_blob.html#hb_blob_create_sub_blob,ptr.hb_blob_t,cuint,cuint	proc hb_blob_create_sub_blob(parent: ptr hb_blob_t; offset: cuint; length: cuint): ptr hb_blob_t		31
+nim	hb_blob_copy_writable_or_fail	harfbuzz/hb_blob.html#hb_blob_copy_writable_or_fail,ptr.hb_blob_t	proc hb_blob_copy_writable_or_fail(blob: ptr hb_blob_t): ptr hb_blob_t		33
+nim	hb_blob_get_empty	harfbuzz/hb_blob.html#hb_blob_get_empty	proc hb_blob_get_empty(): ptr hb_blob_t		34
+nim	hb_blob_reference	harfbuzz/hb_blob.html#hb_blob_reference,ptr.hb_blob_t	proc hb_blob_reference(blob: ptr hb_blob_t): ptr hb_blob_t		35
+nim	hb_blob_destroy	harfbuzz/hb_blob.html#hb_blob_destroy,ptr.hb_blob_t	proc hb_blob_destroy(blob: ptr hb_blob_t)		36
+nim	hb_blob_set_user_data	harfbuzz/hb_blob.html#hb_blob_set_user_data,ptr.hb_blob_t,ptr.hb_user_data_key_t,pointer,hb_destroy_func_t,hb_bool_t	proc hb_blob_set_user_data(blob: ptr hb_blob_t; key: ptr hb_user_data_key_t;\n                      data: pointer; destroy: hb_destroy_func_t;\n                      replace: hb_bool_t): hb_bool_t		37
+nim	hb_blob_get_user_data	harfbuzz/hb_blob.html#hb_blob_get_user_data,ptr.hb_blob_t,ptr.hb_user_data_key_t	proc hb_blob_get_user_data(blob: ptr hb_blob_t; key: ptr hb_user_data_key_t): pointer		41
+nim	hb_blob_make_immutable	harfbuzz/hb_blob.html#hb_blob_make_immutable,ptr.hb_blob_t	proc hb_blob_make_immutable(blob: ptr hb_blob_t)		43
+nim	hb_blob_is_immutable	harfbuzz/hb_blob.html#hb_blob_is_immutable,ptr.hb_blob_t	proc hb_blob_is_immutable(blob: ptr hb_blob_t): hb_bool_t		44
+nim	hb_blob_get_length	harfbuzz/hb_blob.html#hb_blob_get_length,ptr.hb_blob_t	proc hb_blob_get_length(blob: ptr hb_blob_t): cuint		45
+nim	hb_blob_get_data	harfbuzz/hb_blob.html#hb_blob_get_data,ptr.hb_blob_t,ptr.cuint	proc hb_blob_get_data(blob: ptr hb_blob_t; length: ptr cuint): cstring		46
+nim	hb_blob_get_data_writable	harfbuzz/hb_blob.html#hb_blob_get_data_writable,ptr.hb_blob_t,ptr.cuint	proc hb_blob_get_data_writable(blob: ptr hb_blob_t; length: ptr cuint): cstring		47

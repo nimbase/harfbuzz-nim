@@ -1,0 +1,2 @@
+nimTitle	hb_ot_font	harfbuzz/hb_ot_font.html	module harfbuzz/hb_ot_font		0
+nim	hb_ot_font_set_funcs	harfbuzz/hb_ot_font.html#hb_ot_font_set_funcs,ptr.hb_font_t	proc hb_ot_font_set_funcs(font: ptr hb_font_t)		16

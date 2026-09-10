@@ -1,0 +1,16 @@
+nimTitle	hb_features	harfbuzz/hb_features.html	module harfbuzz/hb_features		0
+nim	HB_HAS_CAIRO	harfbuzz/hb_features.html#HB_HAS_CAIRO	const HB_HAS_CAIRO		13
+nim	HB_HAS_CORETEXT	harfbuzz/hb_features.html#HB_HAS_CORETEXT	const HB_HAS_CORETEXT		14
+nim	HB_HAS_DIRECTWRITE	harfbuzz/hb_features.html#HB_HAS_DIRECTWRITE	const HB_HAS_DIRECTWRITE		15
+nim	HB_HAS_FREETYPE	harfbuzz/hb_features.html#HB_HAS_FREETYPE	const HB_HAS_FREETYPE		16
+nim	HB_HAS_GDI	harfbuzz/hb_features.html#HB_HAS_GDI	const HB_HAS_GDI		17
+nim	HB_HAS_GLIB	harfbuzz/hb_features.html#HB_HAS_GLIB	const HB_HAS_GLIB		18
+nim	HB_HAS_GOBJECT	harfbuzz/hb_features.html#HB_HAS_GOBJECT	const HB_HAS_GOBJECT		19
+nim	HB_HAS_GRAPHITE	harfbuzz/hb_features.html#HB_HAS_GRAPHITE	const HB_HAS_GRAPHITE		20
+nim	HB_HAS_GPU	harfbuzz/hb_features.html#HB_HAS_GPU	const HB_HAS_GPU		21
+nim	HB_HAS_ICU	harfbuzz/hb_features.html#HB_HAS_ICU	const HB_HAS_ICU		22
+nim	HB_HAS_RASTER	harfbuzz/hb_features.html#HB_HAS_RASTER	const HB_HAS_RASTER		23
+nim	HB_HAS_SUBSET	harfbuzz/hb_features.html#HB_HAS_SUBSET	const HB_HAS_SUBSET		24
+nim	HB_HAS_UNISCRIBE	harfbuzz/hb_features.html#HB_HAS_UNISCRIBE	const HB_HAS_UNISCRIBE		25
+nim	HB_HAS_VECTOR	harfbuzz/hb_features.html#HB_HAS_VECTOR	const HB_HAS_VECTOR		26
+nim	HB_HAS_WASM	harfbuzz/hb_features.html#HB_HAS_WASM	const HB_HAS_WASM		27

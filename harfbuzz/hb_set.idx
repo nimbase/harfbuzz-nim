@@ -1,0 +1,37 @@
+nimTitle	hb_set	harfbuzz/hb_set.html	module harfbuzz/hb_set		0
+nim	HB_SET_VALUE_INVALID	harfbuzz/hb_set.html#HB_SET_VALUE_INVALID	const HB_SET_VALUE_INVALID		13
+nim	hb_set_t	harfbuzz/hb_set.html#hb_set_t	object hb_set_t		16
+nim	hb_set_create	harfbuzz/hb_set.html#hb_set_create	proc hb_set_create(): ptr hb_set_t		20
+nim	hb_set_get_empty	harfbuzz/hb_set.html#hb_set_get_empty	proc hb_set_get_empty(): ptr hb_set_t		21
+nim	hb_set_reference	harfbuzz/hb_set.html#hb_set_reference,ptr.hb_set_t	proc hb_set_reference(set: ptr hb_set_t): ptr hb_set_t		22
+nim	hb_set_destroy	harfbuzz/hb_set.html#hb_set_destroy,ptr.hb_set_t	proc hb_set_destroy(set: ptr hb_set_t)		23
+nim	hb_set_set_user_data	harfbuzz/hb_set.html#hb_set_set_user_data,ptr.hb_set_t,ptr.hb_user_data_key_t,pointer,hb_destroy_func_t,hb_bool_t	proc hb_set_set_user_data(set: ptr hb_set_t; key: ptr hb_user_data_key_t;\n                     data: pointer; destroy: hb_destroy_func_t;\n                     replace: hb_bool_t): hb_bool_t		24
+nim	hb_set_get_user_data	harfbuzz/hb_set.html#hb_set_get_user_data,ptr.hb_set_t,ptr.hb_user_data_key_t	proc hb_set_get_user_data(set: ptr hb_set_t; key: ptr hb_user_data_key_t): pointer		27
+nim	hb_set_allocation_successful	harfbuzz/hb_set.html#hb_set_allocation_successful,ptr.hb_set_t	proc hb_set_allocation_successful(set: ptr hb_set_t): hb_bool_t		29
+nim	hb_set_copy	harfbuzz/hb_set.html#hb_set_copy,ptr.hb_set_t	proc hb_set_copy(set: ptr hb_set_t): ptr hb_set_t		30
+nim	hb_set_clear	harfbuzz/hb_set.html#hb_set_clear,ptr.hb_set_t	proc hb_set_clear(set: ptr hb_set_t)		31
+nim	hb_set_is_empty	harfbuzz/hb_set.html#hb_set_is_empty,ptr.hb_set_t	proc hb_set_is_empty(set: ptr hb_set_t): hb_bool_t		32
+nim	hb_set_invert	harfbuzz/hb_set.html#hb_set_invert,ptr.hb_set_t	proc hb_set_invert(set: ptr hb_set_t)		33
+nim	hb_set_is_inverted	harfbuzz/hb_set.html#hb_set_is_inverted,ptr.hb_set_t	proc hb_set_is_inverted(set: ptr hb_set_t): hb_bool_t		34
+nim	hb_set_has	harfbuzz/hb_set.html#hb_set_has,ptr.hb_set_t,hb_codepoint_t	proc hb_set_has(set: ptr hb_set_t; codepoint: hb_codepoint_t): hb_bool_t		35
+nim	hb_set_add	harfbuzz/hb_set.html#hb_set_add,ptr.hb_set_t,hb_codepoint_t	proc hb_set_add(set: ptr hb_set_t; codepoint: hb_codepoint_t)		36
+nim	hb_set_add_range	harfbuzz/hb_set.html#hb_set_add_range,ptr.hb_set_t,hb_codepoint_t,hb_codepoint_t	proc hb_set_add_range(set: ptr hb_set_t; first: hb_codepoint_t; last: hb_codepoint_t)		37
+nim	hb_set_add_sorted_array	harfbuzz/hb_set.html#hb_set_add_sorted_array,ptr.hb_set_t,ptr.hb_codepoint_t,cuint	proc hb_set_add_sorted_array(set: ptr hb_set_t;\n                        sorted_codepoints: ptr hb_codepoint_t;\n                        num_codepoints: cuint)		39
+nim	hb_set_del	harfbuzz/hb_set.html#hb_set_del,ptr.hb_set_t,hb_codepoint_t	proc hb_set_del(set: ptr hb_set_t; codepoint: hb_codepoint_t)		42
+nim	hb_set_del_range	harfbuzz/hb_set.html#hb_set_del_range,ptr.hb_set_t,hb_codepoint_t,hb_codepoint_t	proc hb_set_del_range(set: ptr hb_set_t; first: hb_codepoint_t; last: hb_codepoint_t)		43
+nim	hb_set_is_equal	harfbuzz/hb_set.html#hb_set_is_equal,ptr.hb_set_t,ptr.hb_set_t	proc hb_set_is_equal(set: ptr hb_set_t; other: ptr hb_set_t): hb_bool_t		45
+nim	hb_set_hash	harfbuzz/hb_set.html#hb_set_hash,ptr.hb_set_t	proc hb_set_hash(set: ptr hb_set_t): cuint		46
+nim	hb_set_is_subset	harfbuzz/hb_set.html#hb_set_is_subset,ptr.hb_set_t,ptr.hb_set_t	proc hb_set_is_subset(set: ptr hb_set_t; larger_set: ptr hb_set_t): hb_bool_t		47
+nim	hb_set_set	harfbuzz/hb_set.html#hb_set_set,ptr.hb_set_t,ptr.hb_set_t	proc hb_set_set(set: ptr hb_set_t; other: ptr hb_set_t)		49
+nim	hb_set_union	harfbuzz/hb_set.html#hb_set_union,ptr.hb_set_t,ptr.hb_set_t	proc hb_set_union(set: ptr hb_set_t; other: ptr hb_set_t)		50
+nim	hb_set_intersect	harfbuzz/hb_set.html#hb_set_intersect,ptr.hb_set_t,ptr.hb_set_t	proc hb_set_intersect(set: ptr hb_set_t; other: ptr hb_set_t)		51
+nim	hb_set_subtract	harfbuzz/hb_set.html#hb_set_subtract,ptr.hb_set_t,ptr.hb_set_t	proc hb_set_subtract(set: ptr hb_set_t; other: ptr hb_set_t)		52
+nim	hb_set_symmetric_difference	harfbuzz/hb_set.html#hb_set_symmetric_difference,ptr.hb_set_t,ptr.hb_set_t	proc hb_set_symmetric_difference(set: ptr hb_set_t; other: ptr hb_set_t)		53
+nim	hb_set_get_population	harfbuzz/hb_set.html#hb_set_get_population,ptr.hb_set_t	proc hb_set_get_population(set: ptr hb_set_t): cuint		54
+nim	hb_set_get_min	harfbuzz/hb_set.html#hb_set_get_min,ptr.hb_set_t	proc hb_set_get_min(set: ptr hb_set_t): hb_codepoint_t		55
+nim	hb_set_get_max	harfbuzz/hb_set.html#hb_set_get_max,ptr.hb_set_t	proc hb_set_get_max(set: ptr hb_set_t): hb_codepoint_t		56
+nim	hb_set_next	harfbuzz/hb_set.html#hb_set_next,ptr.hb_set_t,ptr.hb_codepoint_t	proc hb_set_next(set: ptr hb_set_t; codepoint: ptr hb_codepoint_t): hb_bool_t		57
+nim	hb_set_previous	harfbuzz/hb_set.html#hb_set_previous,ptr.hb_set_t,ptr.hb_codepoint_t	proc hb_set_previous(set: ptr hb_set_t; codepoint: ptr hb_codepoint_t): hb_bool_t		59
+nim	hb_set_next_range	harfbuzz/hb_set.html#hb_set_next_range,ptr.hb_set_t,ptr.hb_codepoint_t,ptr.hb_codepoint_t	proc hb_set_next_range(set: ptr hb_set_t; first: ptr hb_codepoint_t;\n                  last: ptr hb_codepoint_t): hb_bool_t		61
+nim	hb_set_previous_range	harfbuzz/hb_set.html#hb_set_previous_range,ptr.hb_set_t,ptr.hb_codepoint_t,ptr.hb_codepoint_t	proc hb_set_previous_range(set: ptr hb_set_t; first: ptr hb_codepoint_t;\n                      last: ptr hb_codepoint_t): hb_bool_t		63
+nim	hb_set_next_many	harfbuzz/hb_set.html#hb_set_next_many,ptr.hb_set_t,hb_codepoint_t,ptr.hb_codepoint_t,cuint	proc hb_set_next_many(set: ptr hb_set_t; codepoint: hb_codepoint_t;\n                 out: ptr hb_codepoint_t; size: cuint): cuint		65

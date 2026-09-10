@@ -1,0 +1,9 @@
+nimTitle	hb_version	harfbuzz/hb_version.html	module harfbuzz/hb_version		0
+nim	HB_VERSION_MAJOR	harfbuzz/hb_version.html#HB_VERSION_MAJOR	const HB_VERSION_MAJOR		13
+nim	HB_VERSION_MINOR	harfbuzz/hb_version.html#HB_VERSION_MINOR	const HB_VERSION_MINOR		14
+nim	HB_VERSION_MICRO	harfbuzz/hb_version.html#HB_VERSION_MICRO	const HB_VERSION_MICRO		15
+nim	HB_VERSION_STRING	harfbuzz/hb_version.html#HB_VERSION_STRING	const HB_VERSION_STRING		16
+nim	HB_VERSION_ATLEAST	harfbuzz/hb_version.html#HB_VERSION_ATLEAST.t,untyped,untyped,untyped	template HB_VERSION_ATLEAST(major, minor, micro: untyped): bool		18
+nim	hb_version	harfbuzz/hb_version.html#hb_version,ptr.cuint,ptr.cuint,ptr.cuint	proc hb_version(major: ptr cuint; minor: ptr cuint; micro: ptr cuint)		24
+nim	hb_version_string	harfbuzz/hb_version.html#hb_version_string_2	proc hb_version_string(): cstring		25
+nim	hb_version_atleast	harfbuzz/hb_version.html#hb_version_atleast,cuint,cuint,cuint	proc hb_version_atleast(major: cuint; minor: cuint; micro: cuint): hb_bool_t		26

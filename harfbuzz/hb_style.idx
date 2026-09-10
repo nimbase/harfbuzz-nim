@@ -1,0 +1,3 @@
+nimTitle	hb_style	harfbuzz/hb_style.html	module harfbuzz/hb_style		0
+nim	hb_style_tag_t	harfbuzz/hb_style.html#hb_style_tag_t	enum hb_style_tag_t		15
+nim	hb_style_get_value	harfbuzz/hb_style.html#hb_style_get_value,ptr.hb_font_t,hb_style_tag_t	proc hb_style_get_value(font: ptr hb_font_t; style_tag: hb_style_tag_t): cfloat		26

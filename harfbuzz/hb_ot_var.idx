@@ -1,0 +1,18 @@
+nimTitle	hb_ot_var	harfbuzz/hb_ot_var.html	module harfbuzz/hb_ot_var		0
+nim	HB_OT_TAG_VAR_AXIS_ITALIC	harfbuzz/hb_ot_var.html#HB_OT_TAG_VAR_AXIS_ITALIC	const HB_OT_TAG_VAR_AXIS_ITALIC		17
+nim	HB_OT_TAG_VAR_AXIS_OPTICAL_SIZE	harfbuzz/hb_ot_var.html#HB_OT_TAG_VAR_AXIS_OPTICAL_SIZE	const HB_OT_TAG_VAR_AXIS_OPTICAL_SIZE		18
+nim	HB_OT_TAG_VAR_AXIS_SLANT	harfbuzz/hb_ot_var.html#HB_OT_TAG_VAR_AXIS_SLANT	const HB_OT_TAG_VAR_AXIS_SLANT		19
+nim	HB_OT_TAG_VAR_AXIS_WIDTH	harfbuzz/hb_ot_var.html#HB_OT_TAG_VAR_AXIS_WIDTH	const HB_OT_TAG_VAR_AXIS_WIDTH		20
+nim	HB_OT_TAG_VAR_AXIS_WEIGHT	harfbuzz/hb_ot_var.html#HB_OT_TAG_VAR_AXIS_WEIGHT	const HB_OT_TAG_VAR_AXIS_WEIGHT		21
+nim	hb_ot_var_axis_flags_t	harfbuzz/hb_ot_var.html#hb_ot_var_axis_flags_t	enum hb_ot_var_axis_flags_t		24
+nim	hb_ot_var_axis_info_t	harfbuzz/hb_ot_var.html#hb_ot_var_axis_info_t	object hb_ot_var_axis_info_t		28
+nim	hb_ot_var_has_data	harfbuzz/hb_ot_var.html#hb_ot_var_has_data,ptr.hb_face_t	proc hb_ot_var_has_data(face: ptr hb_face_t): hb_bool_t		40
+nim	hb_ot_var_get_axis_count	harfbuzz/hb_ot_var.html#hb_ot_var_get_axis_count,ptr.hb_face_t	proc hb_ot_var_get_axis_count(face: ptr hb_face_t): cuint		41
+nim	hb_ot_var_get_axis_infos	harfbuzz/hb_ot_var.html#hb_ot_var_get_axis_infos,ptr.hb_face_t,cuint,ptr.cuint,ptr.hb_ot_var_axis_info_t	proc hb_ot_var_get_axis_infos(face: ptr hb_face_t; start_offset: cuint;\n                         axes_count: ptr cuint;\n                         axes_array: ptr hb_ot_var_axis_info_t): cuint		42
+nim	hb_ot_var_find_axis_info	harfbuzz/hb_ot_var.html#hb_ot_var_find_axis_info,ptr.hb_face_t,hb_tag_t,ptr.hb_ot_var_axis_info_t	proc hb_ot_var_find_axis_info(face: ptr hb_face_t; axis_tag: hb_tag_t;\n                         axis_info: ptr hb_ot_var_axis_info_t): hb_bool_t		45
+nim	hb_ot_var_get_named_instance_count	harfbuzz/hb_ot_var.html#hb_ot_var_get_named_instance_count,ptr.hb_face_t	proc hb_ot_var_get_named_instance_count(face: ptr hb_face_t): cuint		47
+nim	hb_ot_var_named_instance_get_subfamily_name_id	harfbuzz/hb_ot_var.html#hb_ot_var_named_instance_get_subfamily_name_id,ptr.hb_face_t,cuint	proc hb_ot_var_named_instance_get_subfamily_name_id(face: ptr hb_face_t;\n    instance_index: cuint): hb_ot_name_id_t		48
+nim	hb_ot_var_named_instance_get_postscript_name_id	harfbuzz/hb_ot_var.html#hb_ot_var_named_instance_get_postscript_name_id,ptr.hb_face_t,cuint	proc hb_ot_var_named_instance_get_postscript_name_id(face: ptr hb_face_t;\n    instance_index: cuint): hb_ot_name_id_t		50
+nim	hb_ot_var_named_instance_get_design_coords	harfbuzz/hb_ot_var.html#hb_ot_var_named_instance_get_design_coords,ptr.hb_face_t,cuint,ptr.cuint,ptr.cfloat	proc hb_ot_var_named_instance_get_design_coords(face: ptr hb_face_t;\n    instance_index: cuint; coords_length: ptr cuint; coords: ptr cfloat): cuint		52
+nim	hb_ot_var_normalize_variations	harfbuzz/hb_ot_var.html#hb_ot_var_normalize_variations,ptr.hb_face_t,ptr.hb_variation_t,cuint,ptr.cint,cuint	proc hb_ot_var_normalize_variations(face: ptr hb_face_t;\n                               variations: ptr hb_variation_t;\n                               variations_length: cuint; coords: ptr cint;\n                               coords_length: cuint)		55
+nim	hb_ot_var_normalize_coords	harfbuzz/hb_ot_var.html#hb_ot_var_normalize_coords,ptr.hb_face_t,cuint,ptr.cfloat,ptr.cint	proc hb_ot_var_normalize_coords(face: ptr hb_face_t; coords_length: cuint;\n                           design_coords: ptr cfloat;\n                           normalized_coords: ptr cint)		60

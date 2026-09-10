@@ -1,0 +1,20 @@
+nimTitle	hb_ot_color	harfbuzz/hb_ot_color.html	module harfbuzz/hb_ot_color		0
+nim	hb_ot_color_palette_flags_t	harfbuzz/hb_ot_color.html#hb_ot_color_palette_flags_t	enum hb_ot_color_palette_flags_t		21
+nim	hb_ot_color_layer_t	harfbuzz/hb_ot_color.html#hb_ot_color_layer_t	object hb_ot_color_layer_t		26
+nim	hb_ot_color_has_palettes	harfbuzz/hb_ot_color.html#hb_ot_color_has_palettes,ptr.hb_face_t	proc hb_ot_color_has_palettes(face: ptr hb_face_t): hb_bool_t		32
+nim	hb_ot_color_palette_get_count	harfbuzz/hb_ot_color.html#hb_ot_color_palette_get_count,ptr.hb_face_t	proc hb_ot_color_palette_get_count(face: ptr hb_face_t): cuint		33
+nim	hb_ot_color_palette_get_name_id	harfbuzz/hb_ot_color.html#hb_ot_color_palette_get_name_id,ptr.hb_face_t,cuint	proc hb_ot_color_palette_get_name_id(face: ptr hb_face_t; palette_index: cuint): hb_ot_name_id_t		34
+nim	hb_ot_color_palette_color_get_name_id	harfbuzz/hb_ot_color.html#hb_ot_color_palette_color_get_name_id,ptr.hb_face_t,cuint	proc hb_ot_color_palette_color_get_name_id(face: ptr hb_face_t; color_index: cuint): hb_ot_name_id_t		36
+nim	hb_ot_color_palette_get_flags	harfbuzz/hb_ot_color.html#hb_ot_color_palette_get_flags,ptr.hb_face_t,cuint	proc hb_ot_color_palette_get_flags(face: ptr hb_face_t; palette_index: cuint): hb_ot_color_palette_flags_t		38
+nim	hb_ot_color_palette_get_colors	harfbuzz/hb_ot_color.html#hb_ot_color_palette_get_colors,ptr.hb_face_t,cuint,cuint,ptr.cuint,ptr.hb_color_t	proc hb_ot_color_palette_get_colors(face: ptr hb_face_t; palette_index: cuint;\n                               start_offset: cuint; color_count: ptr cuint;\n                               colors: ptr hb_color_t): cuint		40
+nim	hb_ot_color_has_layers	harfbuzz/hb_ot_color.html#hb_ot_color_has_layers,ptr.hb_face_t	proc hb_ot_color_has_layers(face: ptr hb_face_t): hb_bool_t		44
+nim	hb_ot_color_glyph_get_layers	harfbuzz/hb_ot_color.html#hb_ot_color_glyph_get_layers,ptr.hb_face_t,hb_codepoint_t,cuint,ptr.cuint,ptr.hb_ot_color_layer_t	proc hb_ot_color_glyph_get_layers(face: ptr hb_face_t; glyph: hb_codepoint_t;\n                             start_offset: cuint; layer_count: ptr cuint;\n                             layers: ptr hb_ot_color_layer_t): cuint		45
+nim	hb_ot_color_has_paint	harfbuzz/hb_ot_color.html#hb_ot_color_has_paint,ptr.hb_face_t	proc hb_ot_color_has_paint(face: ptr hb_face_t): hb_bool_t		49
+nim	hb_ot_color_glyph_has_paint	harfbuzz/hb_ot_color.html#hb_ot_color_glyph_has_paint,ptr.hb_face_t,hb_codepoint_t	proc hb_ot_color_glyph_has_paint(face: ptr hb_face_t; glyph: hb_codepoint_t): hb_bool_t		50
+nim	hb_ot_color_has_svg	harfbuzz/hb_ot_color.html#hb_ot_color_has_svg,ptr.hb_face_t	proc hb_ot_color_has_svg(face: ptr hb_face_t): hb_bool_t		52
+nim	hb_ot_color_get_svg_document_count	harfbuzz/hb_ot_color.html#hb_ot_color_get_svg_document_count,ptr.hb_face_t	proc hb_ot_color_get_svg_document_count(face: ptr hb_face_t): cuint		53
+nim	hb_ot_color_glyph_get_svg_document_index	harfbuzz/hb_ot_color.html#hb_ot_color_glyph_get_svg_document_index,ptr.hb_face_t,hb_codepoint_t,ptr.cuint	proc hb_ot_color_glyph_get_svg_document_index(face: ptr hb_face_t;\n    glyph: hb_codepoint_t; svg_document_index: ptr cuint): hb_bool_t		54
+nim	hb_ot_color_get_svg_document_glyph_range	harfbuzz/hb_ot_color.html#hb_ot_color_get_svg_document_glyph_range,ptr.hb_face_t,cuint,ptr.hb_codepoint_t,ptr.hb_codepoint_t	proc hb_ot_color_get_svg_document_glyph_range(face: ptr hb_face_t;\n    svg_document_index: cuint; start_glyph_id: ptr hb_codepoint_t;\n    end_glyph_id: ptr hb_codepoint_t): hb_bool_t		57
+nim	hb_ot_color_glyph_reference_svg	harfbuzz/hb_ot_color.html#hb_ot_color_glyph_reference_svg,ptr.hb_face_t,hb_codepoint_t	proc hb_ot_color_glyph_reference_svg(face: ptr hb_face_t; glyph: hb_codepoint_t): ptr hb_blob_t		61
+nim	hb_ot_color_has_png	harfbuzz/hb_ot_color.html#hb_ot_color_has_png,ptr.hb_face_t	proc hb_ot_color_has_png(face: ptr hb_face_t): hb_bool_t		63
+nim	hb_ot_color_glyph_reference_png	harfbuzz/hb_ot_color.html#hb_ot_color_glyph_reference_png,ptr.hb_font_t,hb_codepoint_t	proc hb_ot_color_glyph_reference_png(font: ptr hb_font_t; glyph: hb_codepoint_t): ptr hb_blob_t		64

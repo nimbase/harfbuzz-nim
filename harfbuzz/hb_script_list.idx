@@ -1,0 +1,3 @@
+nimTitle	hb_script_list	harfbuzz/hb_script_list.html	module harfbuzz/hb_script_list		0
+nim	hb_script_t	harfbuzz/hb_script_list.html#hb_script_t	enum hb_script_t		9
+nim	HB_SCRIPT_MAX_VALUE_SIGNED	harfbuzz/hb_script_list.html#HB_SCRIPT_MAX_VALUE_SIGNED	const HB_SCRIPT_MAX_VALUE_SIGNED		190

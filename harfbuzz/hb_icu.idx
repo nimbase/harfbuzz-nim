@@ -1,0 +1,11 @@
+nimTitle	hb_icu	harfbuzz/hb_icu.html	module harfbuzz/hb_icu		0
+nim	UScriptCode	harfbuzz/hb_icu.html#UScriptCode	enum UScriptCode		25
+nim	USCRIPT_UCAS	harfbuzz/hb_icu.html#USCRIPT_UCAS	const USCRIPT_UCAS		243
+nim	USCRIPT_MANDAEAN	harfbuzz/hb_icu.html#USCRIPT_MANDAEAN	const USCRIPT_MANDAEAN		244
+nim	USCRIPT_MEROITIC	harfbuzz/hb_icu.html#USCRIPT_MEROITIC	const USCRIPT_MEROITIC		245
+nim	USCRIPT_PHONETIC_POLLARD	harfbuzz/hb_icu.html#USCRIPT_PHONETIC_POLLARD	const USCRIPT_PHONETIC_POLLARD		246
+nim	USCRIPT_DUPLOYAN_SHORTAND	harfbuzz/hb_icu.html#USCRIPT_DUPLOYAN_SHORTAND	const USCRIPT_DUPLOYAN_SHORTAND		247
+nim	USCRIPT_SINDHI	harfbuzz/hb_icu.html#USCRIPT_SINDHI	const USCRIPT_SINDHI		248
+nim	hb_icu_script_to_script	harfbuzz/hb_icu.html#hb_icu_script_to_script,UScriptCode	proc hb_icu_script_to_script(script: UScriptCode): hb_script_t		252
+nim	hb_icu_script_from_script	harfbuzz/hb_icu.html#hb_icu_script_from_script,hb_script_t	proc hb_icu_script_from_script(script: hb_script_t): UScriptCode		253
+nim	hb_icu_get_unicode_funcs	harfbuzz/hb_icu.html#hb_icu_get_unicode_funcs	proc hb_icu_get_unicode_funcs(): ptr hb_unicode_funcs_t		254
