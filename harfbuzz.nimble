@@ -1,6 +1,6 @@
 # Package
 
-version       = "14.2.1"
+version       = "0.1.0"
 author        = "George Lemon"
 description   = "Nim bindings to HarfBuzz text shaping engine"
 license       = "MIT"
