@@ -1,7 +1,44 @@
-# name: test
-# on: [push, pull_request]
-# jobs:
-#   test:
-#     uses: nimbase/setup-nim-action/.github/workflows/test.yml@main
-#     with:
-#       nim-version: stable
+name: test
+on: [push, pull_request]
+jobs:
+  test:
+    uses: nimbase/setup-nim-action/.github/workflows/test.yml@main
+    with:
+      nim-version: stable
+      # Windows is excluded: the bindings resolve compiler flags through
+      # `pkg-config` at Nim compile time, which has no stock install there.
+      os: '[{"os":"ubuntu-latest"},{"os":"macos-15"}]'
+      # The test suite pins HarfBuzz 14.2.1 (see the version test) and needs
+      # the subset + icu companion libraries, so build that exact release
+      # from source instead of using whatever the runner ships.
+      pre-install-command: |
+        set -eu
+        HB_VERSION=14.2.1
+        case "$RUNNER_OS" in
+          Linux)
+            sudo apt-get update -q
+            sudo apt-get install -y -q meson ninja-build pkg-config libicu-dev
+            ;;
+          macOS)
+            brew list meson >/dev/null 2>&1 || brew install meson ninja pkg-config icu4c
+            ICU_PREFIX="$(brew --prefix icu4c)"
+            export PKG_CONFIG_PATH="${ICU_PREFIX}/lib/pkgconfig${PKG_CONFIG_PATH:+:${PKG_CONFIG_PATH}}"
+            # Persist for the later compile steps: hb-icu.h includes
+            # <unicode/*.h>, and keg-only icu4c is off the default path.
+            echo "PKG_CONFIG_PATH=${PKG_CONFIG_PATH}" >> "$GITHUB_ENV"
+            echo "CPATH=${ICU_PREFIX}/include${CPATH:+:${CPATH}}" >> "$GITHUB_ENV"
+            echo "LIBRARY_PATH=${ICU_PREFIX}/lib${LIBRARY_PATH:+:${LIBRARY_PATH}}" >> "$GITHUB_ENV"
+            ;;
+        esac
+        curl -sSL -o /tmp/harfbuzz.tar.xz \
+          "https://github.com/harfbuzz/harfbuzz/releases/download/${HB_VERSION}/harfbuzz-${HB_VERSION}.tar.xz"
+        tar -xf /tmp/harfbuzz.tar.xz -C /tmp
+        meson setup /tmp/hb-build "/tmp/harfbuzz-${HB_VERSION}" \
+          --prefix=/usr/local --buildtype=release \
+          -Dtests=disabled -Dutilities=disabled -Ddocs=disabled \
+          -Dfreetype=disabled -Dglib=disabled -Dgobject=disabled \
+          -Dcairo=disabled -Dchafa=disabled -Dgraphite=disabled
+        ninja -C /tmp/hb-build
+        sudo meson install -C /tmp/hb-build
+        if [ "$RUNNER_OS" = Linux ]; then sudo ldconfig; fi
+        pkg-config --modversion harfbuzz harfbuzz-subset harfbuzz-icu
