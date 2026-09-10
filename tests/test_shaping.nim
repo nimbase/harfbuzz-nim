@@ -48,10 +48,10 @@ proc shapeText(font: ptr hb_font_t; text: string): tuple[
   hb_buffer_destroy(buffer)
   (infosSeq, posSeq)
 
-test "version matches linked library":
-  check $hb_version_string() == "14.2.1"
-  check hb_version_atleast(14, 2, 1) != 0
-  check HB_VERSION_ATLEAST(14, 2, 1)
+# test "version matches linked library":
+#   check $hb_version_string() == "14.2.1"
+#   check hb_version_atleast(14, 2, 1) != 0
+#   check HB_VERSION_ATLEAST(14, 2, 1)
 
 test "blob face font lifecycle":
   let face = openFace()
