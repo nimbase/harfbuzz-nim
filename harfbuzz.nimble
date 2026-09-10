@@ -2,7 +2,7 @@
 
 version       = "14.2.1"
 author        = "George Lemon"
-description   = "Low-level Nim bindings for the HarfBuzz text shaping library (C API, importc)"
+description   = "Nim bindings to HarfBuzz text shaping engine"
 license       = "MIT"
 srcDir        = "src"
 
