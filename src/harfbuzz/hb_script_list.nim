@@ -1,3 +1,8 @@
+# Nim bindings to HarfBuzz text shaping engine
+#
+# (c) 2026 George Lemon | MIT License
+#          https://github.com/nimbase/harfbuzz-nim 
+
 ## Script list generated from hb-script-list.h (HarfBuzz 14.2.1). Do not hand-edit.
 
 type

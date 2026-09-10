@@ -1,3 +1,8 @@
+# Nim bindings to HarfBuzz text shaping engine
+#
+# (c) 2026 George Lemon | MIT License
+#          https://github.com/nimbase/harfbuzz-nim 
+
 ## harfbuzz: low-level Nim bindings for the HarfBuzz text shaping library.
 ##
 ## C names are preserved verbatim so upstream code stays greppable.

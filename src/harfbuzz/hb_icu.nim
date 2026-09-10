@@ -1,3 +1,8 @@
+# Nim bindings to HarfBuzz text shaping engine
+#
+# (c) 2026 George Lemon | MIT License
+#          https://github.com/nimbase/harfbuzz-nim 
+
 ## Bindings for hb-icu.h (HarfBuzz 14.2.1).
 ##
 ## Links -lharfbuzz-icu. Needs ICU headers (unicode/uscript.h) at
