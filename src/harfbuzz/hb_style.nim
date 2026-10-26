@@ -5,11 +5,15 @@
 
 ## Bindings for hb-style.h (HarfBuzz 14.2.1).
 
+
 import harfbuzz/hb_common
 import harfbuzz/hb_font
 
 export hb_common
 export hb_font
+
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb.h>".}
 
 type
   hb_style_tag_t* {.size: 4.} = enum
@@ -20,6 +24,9 @@ type
     HB_STYLE_TAG_WIDTH = 0x77647468
     HB_STYLE_TAG_WEIGHT = 0x77676874
     HB_STYLE_TAG_MAX_VALUE = 0x7FFFFFFF
+
+when defined(harfbuzzStatic):
+  {.pop.}
 
 {.push header: "<harfbuzz/hb.h>", importc, cdecl.}
 

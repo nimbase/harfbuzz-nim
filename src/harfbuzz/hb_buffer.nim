@@ -5,6 +5,8 @@
 
 ## Bindings for hb-buffer.h (HarfBuzz 14.2.1).
 
+import harfbuzz/private/native_types
+
 import harfbuzz/hb_common
 import harfbuzz/hb_unicode
 import harfbuzz/hb_font
@@ -13,6 +15,9 @@ export hb_common
 export hb_unicode
 export hb_font
 
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb.h>".}
+
 type
   hb_glyph_flags_t* {.size: 4.} = enum
     HB_GLYPH_FLAG_UNSAFE_TO_BREAK = 0x00000001
@@ -20,28 +25,28 @@ type
     HB_GLYPH_FLAG_SAFE_TO_INSERT_TATWEEL = 0x00000004
     HB_GLYPH_FLAG_DEFINED = 0x00000007
 
-  hb_glyph_info_t* = object
+  hb_glyph_info_t* {.bycopy, completeStruct.} = object
     codepoint*: hb_codepoint_t
     mask*: hb_mask_t
     cluster*: uint32
     var1*: hb_var_int_t
     var2*: hb_var_int_t
 
-  hb_glyph_position_t* = object
+  hb_glyph_position_t* {.bycopy, completeStruct.} = object
     x_advance*: hb_position_t
     y_advance*: hb_position_t
     x_offset*: hb_position_t
     y_offset*: hb_position_t
     `var`*: hb_var_int_t
 
-  hb_segment_properties_t* = object
+  hb_segment_properties_t* {.bycopy, completeStruct.} = object
     direction*: hb_direction_t
     script*: hb_script_t
     language*: hb_language_t
     reserved1*: pointer
     reserved2*: pointer
 
-  hb_buffer_t* = object
+  hb_buffer_t* {.incompleteStruct.} = object
 
   hb_buffer_content_type_t* {.size: 4.} = enum
     HB_BUFFER_CONTENT_TYPE_INVALID = 0
@@ -96,6 +101,9 @@ type
     proc(buffer: ptr hb_buffer_t; font: ptr hb_font_t; message: cstring;
          user_data: pointer): hb_bool_t {.cdecl.}
 
+when defined(harfbuzzStatic):
+  {.pop.}
+
 const
   HB_BUFFER_REPLACEMENT_CODEPOINT_DEFAULT* = hb_codepoint_t(0xFFFD'u32)
   HB_BUFFER_CLUSTER_LEVEL_DEFAULT* =
@@ -129,7 +137,11 @@ template HB_BUFFER_CLUSTER_LEVEL_IS_CHARACTERS*(
    ((1'u32 shl cuint(HB_BUFFER_CLUSTER_LEVEL_MONOTONE_CHARACTERS)) or
     (1'u32 shl cuint(HB_BUFFER_CLUSTER_LEVEL_CHARACTERS)))) != 0
 
-{.push header: "<harfbuzz/hb.h>", importc, cdecl.}
+const hbApiHeader =
+  when defined(harfbuzzStatic): hbNativeHeader
+  else: "<harfbuzz/hb.h>"
+
+{.push header: hbApiHeader, importc, cdecl.}
 
 proc hb_segment_properties_equal*(a: ptr hb_segment_properties_t;
                                  b: ptr hb_segment_properties_t): hb_bool_t

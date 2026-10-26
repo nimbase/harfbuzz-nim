@@ -10,6 +10,7 @@
 ## hb_aat_layout_feature_selector_t (= cuint). Generated enum/const
 ## values; procs hand-written below.
 
+
 import harfbuzz/hb_common
 import harfbuzz/hb_face
 import harfbuzz/hb_ot_name
@@ -17,6 +18,9 @@ import harfbuzz/hb_ot_name
 export hb_common
 export hb_face
 export hb_ot_name
+
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb-aat-layout.h>".}
 
 type
   hb_aat_layout_feature_type_t* {.size: 4.} = enum
@@ -63,6 +67,9 @@ type
     HB_AAT_LAYOUT_FEATURE_TYPE_MAX_VALUE = 0x7FFFFFFF
 
   hb_aat_layout_feature_selector_t* = cuint
+
+when defined(harfbuzzStatic):
+  {.pop.}
 
 const
   HB_AAT_LAYOUT_FEATURE_SELECTOR_INVALID* = cuint(0xFFFF)
@@ -317,12 +324,18 @@ const
   HB_AAT_LAYOUT_FEATURE_SELECTOR_DEFAULT_CJK_ROMAN* = cuint(2)
   HB_AAT_LAYOUT_FEATURE_SELECTOR_FULL_WIDTH_CJK_ROMAN* = cuint(3)
 
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb-aat-layout.h>".}
+
 type
-  hb_aat_layout_feature_selector_info_t* = object
+  hb_aat_layout_feature_selector_info_t* {.bycopy, completeStruct.} = object
     name_id*: hb_ot_name_id_t
     enable*: hb_aat_layout_feature_selector_t
     disable*: hb_aat_layout_feature_selector_t
     reserved*: cuint
+
+when defined(harfbuzzStatic):
+  {.pop.}
 
 const
   HB_AAT_LAYOUT_NO_SELECTOR_INDEX* = cuint(0xFFFF)

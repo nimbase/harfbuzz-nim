@@ -16,10 +16,16 @@
 ## root module demotes that diagnostic back to a warning with
 ## `-Wno-incompatible-function-pointer-types`. Register Nim callbacks
 ## directly; no casts needed.
+## Static builds instead preserve the native C typedef identities.
+
+import harfbuzz/private/native_types
 
 import harfbuzz/hb_script_list
 
 export hb_script_list
+
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb.h>".}
 
 type
   hb_bool_t* = cint
@@ -27,7 +33,7 @@ type
   hb_position_t* = int32
   hb_mask_t* = uint32
 
-  hb_var_int_t* {.union.} = object
+  hb_var_int_t* {.union, bycopy, completeStruct.} = object
     u32*: uint32
     i32*: int32
     u16*: array[2, uint16]
@@ -35,7 +41,7 @@ type
     u8*: array[4, uint8]
     i8*: array[4, int8]
 
-  hb_var_num_t* {.union.} = object
+  hb_var_num_t* {.union, bycopy, completeStruct.} = object
     f*: cfloat
     u32*: uint32
     i32*: int32
@@ -53,33 +59,46 @@ type
     HB_DIRECTION_TTB = 6
     HB_DIRECTION_BTT = 7
 
-  hb_language_impl_t* = object
+when defined(harfbuzzStatic):
+  {.pop.}
+
+type
+  # A file-scope forward declaration keeps C callback pointer types compatible.
+  hb_language_impl_t* {.importc: "const struct hb_language_impl_t",
+    header: hbOpaqueHeader, incompleteStruct.} = object
   hb_language_t* = ptr hb_language_impl_t
 
-  hb_user_data_key_t* = object
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb.h>".}
+
+type
+  hb_user_data_key_t* {.bycopy, completeStruct.} = object
     unused*: char
 
   hb_destroy_func_t* = proc(user_data: pointer) {.cdecl.}
 
-  hb_feature_t* = object
+  hb_feature_t* {.bycopy, completeStruct.} = object
     tag*: hb_tag_t
     value*: uint32
     start*: cuint
     `end`*: cuint
 
-  hb_variation_t* = object
+  hb_variation_t* {.bycopy, completeStruct.} = object
     tag*: hb_tag_t
     value*: cfloat
 
   hb_color_t* = uint32
 
-  hb_glyph_extents_t* = object
+  hb_glyph_extents_t* {.bycopy, completeStruct.} = object
     x_bearing*: hb_position_t
     y_bearing*: hb_position_t
     width*: hb_position_t
     height*: hb_position_t
 
-  hb_font_t* = object
+  hb_font_t* {.incompleteStruct.} = object
+
+when defined(harfbuzzStatic):
+  {.pop.}
 
 template HB_TAG*(c1, c2, c3, c4: untyped): hb_tag_t =
   hb_tag_t((hb_tag_t(c1) and 0xFF) shl 24 or
@@ -136,7 +155,11 @@ template hb_color_get_green*(color: hb_color_t): uint8 =
 template hb_color_get_blue*(color: hb_color_t): uint8 =
   uint8((color shr 24) and 0xFF)
 
-{.push header: "<harfbuzz/hb.h>", importc, cdecl.}
+const hbApiHeader =
+  when defined(harfbuzzStatic): hbNativeHeader
+  else: "<harfbuzz/hb.h>"
+
+{.push header: hbApiHeader, importc, cdecl.}
 
 proc hb_tag_from_string*(str: cstring; len: cint): hb_tag_t
 proc hb_tag_to_string*(tag: hb_tag_t; buf: cstring)

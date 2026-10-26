@@ -5,6 +5,7 @@
 
 ## Bindings for hb-face.h (HarfBuzz 14.2.1).
 
+
 import harfbuzz/hb_common
 import harfbuzz/hb_blob
 import harfbuzz/hb_set
@@ -15,8 +16,11 @@ export hb_blob
 export hb_set
 export hb_map
 
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb.h>".}
+
 type
-  hb_face_t* = object
+  hb_face_t* {.incompleteStruct.} = object
 
   hb_reference_table_func_t* =
     proc(face: ptr hb_face_t; tag: hb_tag_t;
@@ -26,6 +30,9 @@ type
     proc(face: ptr hb_face_t; start_offset: cuint;
          table_count: ptr cuint; table_tags: ptr hb_tag_t;
          user_data: pointer): cuint {.cdecl.}
+
+when defined(harfbuzzStatic):
+  {.pop.}
 
 {.push header: "<harfbuzz/hb.h>", importc, cdecl.}
 

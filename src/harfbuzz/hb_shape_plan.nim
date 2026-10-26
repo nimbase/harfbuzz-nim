@@ -5,6 +5,8 @@
 
 ## Bindings for hb-shape-plan.h (HarfBuzz 14.2.1).
 
+import harfbuzz/private/native_types
+
 import harfbuzz/hb_common
 import harfbuzz/hb_buffer
 import harfbuzz/hb_font
@@ -13,10 +15,20 @@ export hb_common
 export hb_buffer
 export hb_font
 
-type
-  hb_shape_plan_t* = object
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb.h>".}
 
-{.push header: "<harfbuzz/hb.h>", importc, cdecl.}
+type
+  hb_shape_plan_t* {.incompleteStruct.} = object
+
+when defined(harfbuzzStatic):
+  {.pop.}
+
+const hbApiHeader =
+  when defined(harfbuzzStatic): hbNativeHeader
+  else: "<harfbuzz/hb.h>"
+
+{.push header: hbApiHeader, importc, cdecl.}
 
 proc hb_shape_plan_create*(face: ptr hb_face_t;
                            props: ptr hb_segment_properties_t;

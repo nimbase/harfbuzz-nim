@@ -5,6 +5,7 @@
 
 ## Bindings for hb-ot-math.h (HarfBuzz 14.2.1).
 
+
 import harfbuzz/hb_common
 import harfbuzz/hb_face
 import harfbuzz/hb_font
@@ -16,6 +17,9 @@ export hb_font
 const
   HB_OT_TAG_MATH* = hb_tag_t(0x4D415448'u32)
   HB_OT_TAG_MATH_SCRIPT* = hb_tag_t(0x6D617468'u32)
+
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb-ot.h>".}
 
 type
   hb_ot_math_constant_t* {.size: 4.} = enum
@@ -82,23 +86,26 @@ type
     HB_OT_MATH_KERN_BOTTOM_RIGHT = 2
     HB_OT_MATH_KERN_BOTTOM_LEFT = 3
 
-  hb_ot_math_kern_entry_t* = object
+  hb_ot_math_kern_entry_t* {.bycopy, completeStruct.} = object
     max_correction_height*: hb_position_t
     kern_value*: hb_position_t
 
-  hb_ot_math_glyph_variant_t* = object
+  hb_ot_math_glyph_variant_t* {.bycopy, completeStruct.} = object
     glyph*: hb_codepoint_t
     advance*: hb_position_t
 
   hb_ot_math_glyph_part_flags_t* {.size: 4.} = enum
     HB_OT_MATH_GLYPH_PART_FLAG_EXTENDER = 0x00000001
 
-  hb_ot_math_glyph_part_t* = object
+  hb_ot_math_glyph_part_t* {.bycopy, completeStruct.} = object
     glyph*: hb_codepoint_t
     start_connector_length*: hb_position_t
     end_connector_length*: hb_position_t
     full_advance*: hb_position_t
     flags*: hb_ot_math_glyph_part_flags_t
+
+when defined(harfbuzzStatic):
+  {.pop.}
 
 {.push header: "<harfbuzz/hb-ot.h>", importc, cdecl.}
 

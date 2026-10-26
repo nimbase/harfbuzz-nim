@@ -5,6 +5,7 @@
 
 ## Bindings for hb-ot-meta.h (HarfBuzz 14.2.1).
 
+
 import harfbuzz/hb_common
 import harfbuzz/hb_blob
 import harfbuzz/hb_face
@@ -13,11 +14,17 @@ export hb_common
 export hb_blob
 export hb_face
 
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb-ot.h>".}
+
 type
   hb_ot_meta_tag_t* {.size: 4.} = enum
     HB_OT_META_TAG_DESIGN_LANGUAGES = 0x646C6E67
     HB_OT_META_TAG_SUPPORTED_LANGUAGES = 0x736C6E67
     HB_OT_META_TAG_MAX_VALUE = 0x7FFFFFFF
+
+when defined(harfbuzzStatic):
+  {.pop.}
 
 {.push header: "<harfbuzz/hb-ot.h>", importc, cdecl.}
 

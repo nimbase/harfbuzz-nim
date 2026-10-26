@@ -1,0 +1,33 @@
+name: static
+on: [push, pull_request]
+
+jobs:
+  windows:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+      - uses: jiro4989/setup-nim-action@v2
+        with:
+          nim-version: '2.2.10'
+      - name: Install static HarfBuzz
+        shell: pwsh
+        run: |
+          & "$env:VCPKG_INSTALLATION_ROOT/vcpkg.exe" install 'harfbuzz[core]:x64-windows-static'
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Test static C and C++ with MSVC
+        shell: pwsh
+        run: |
+          $root = "$env:VCPKG_INSTALLATION_ROOT/installed/x64-windows-static"
+          $flags = @('--cc:vcc', '-d:release', '-d:harfbuzzStatic', '--passC:/MT',
+            "--passC:/I$root/include", '--passC:/DHB_NO_SINGLE_HEADER_ERROR',
+            "--passL:$root/lib/harfbuzz-subset.lib", "--passL:$root/lib/harfbuzz.lib")
+          nim c -r @flags --out:tests/static-c.exe tests/test_static_linking.nim
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          nim cpp -r @flags --out:tests/static-cpp.exe tests/test_static_linking.nim
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $dependencies = dumpbin /dependents tests/static-cpp.exe
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          if ($dependencies -match '(?i)harfbuzz.*\.dll') { throw 'Unexpected HarfBuzz DLL dependency' }

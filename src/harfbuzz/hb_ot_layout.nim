@@ -5,6 +5,7 @@
 
 ## Bindings for hb-ot-layout.h (HarfBuzz 14.2.1).
 
+
 import harfbuzz/hb_common
 import harfbuzz/hb_blob
 import harfbuzz/hb_face
@@ -36,6 +37,9 @@ const
   HB_OT_LAYOUT_DEFAULT_LANGUAGE_INDEX* = 0xFFFF'u32
   HB_OT_LAYOUT_NO_VARIATIONS_INDEX* = 0xFFFFFFFF'u32
 
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb-ot.h>".}
+
 type
   hb_ot_layout_glyph_class_t* {.size: 4.} = enum
     HB_OT_LAYOUT_GLYPH_CLASS_UNCLASSIFIED = 0
@@ -55,6 +59,9 @@ type
     HB_OT_LAYOUT_BASELINE_TAG_IDEO_EMBOX_CENTRAL = 0x49646365
     HB_OT_LAYOUT_BASELINE_TAG_MATH = 0x6D617468
     HB_OT_LAYOUT_BASELINE_TAG_MAX_VALUE = 0x7FFFFFFF
+
+when defined(harfbuzzStatic):
+  {.pop.}
 
 {.push header: "<harfbuzz/hb-ot.h>", importc, cdecl.}
 

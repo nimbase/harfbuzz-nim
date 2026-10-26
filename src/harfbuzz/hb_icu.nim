@@ -8,9 +8,10 @@
 ## Links -lharfbuzz-icu. Needs ICU headers (unicode/uscript.h) at
 ## compile time; covered by pkg-config harfbuzz-icu cflags.
 
-when not defined(harfbuzzStatic):
+when not defined(harfbuzzStatic) and not defined(harfbuzzNoPkgConfig):
   {.passC: gorge("pkg-config --cflags harfbuzz-icu").}
   {.passL: gorge("pkg-config --libs harfbuzz-icu").}
+
 
 import harfbuzz/hb_common
 import harfbuzz/hb_unicode
@@ -21,6 +22,9 @@ export hb_unicode
 ## UScriptCode generated from unicode/uscript.h (ICU 78.3). Do not hand-edit.
 ## Aliased codes (UCAS, MANDAEAN, MEROITIC, PHONETIC_POLLARD, SINDHI,
 ## DUPLOYAN_SHORTAND) are const aliases below the enum.
+
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb-icu.h>".}
 
 type
   UScriptCode* {.size: 4.} = enum
@@ -239,6 +243,9 @@ type
     USCRIPT_TOLONG_SIKI = 211
     USCRIPT_TRADITIONAL_HAN_WITH_LATIN = 212
     USCRIPT_CODE_LIMIT = 213
+
+when defined(harfbuzzStatic):
+  {.pop.}
 
 const
   USCRIPT_UCAS* = USCRIPT_CANADIAN_ABORIGINAL

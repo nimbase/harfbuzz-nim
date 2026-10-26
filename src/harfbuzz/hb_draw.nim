@@ -5,12 +5,16 @@
 
 ## Bindings for hb-draw.h (HarfBuzz 14.2.1).
 
+
 import harfbuzz/hb_common
 
 export hb_common
 
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb.h>".}
+
 type
-  hb_draw_state_t* = object
+  hb_draw_state_t* {.bycopy, completeStruct.} = object
     path_open*: hb_bool_t
     path_start_x*: cfloat
     path_start_y*: cfloat
@@ -24,7 +28,7 @@ type
     reserved6*: hb_var_num_t
     reserved7*: hb_var_num_t
 
-  hb_draw_funcs_t* = object
+  hb_draw_funcs_t* {.incompleteStruct.} = object
 
   hb_draw_move_to_func_t* =
     proc(dfuncs: ptr hb_draw_funcs_t; draw_data: pointer;
@@ -54,6 +58,9 @@ type
   hb_draw_line_cap_t* {.size: 4.} = enum
     HB_DRAW_LINE_CAP_BUTT = 0
     HB_DRAW_LINE_CAP_SQUARE = 1
+
+when defined(harfbuzzStatic):
+  {.pop.}
 
 proc HB_DRAW_STATE_DEFAULT*(): hb_draw_state_t =
   hb_draw_state_t(path_open: 0)

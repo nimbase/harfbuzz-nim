@@ -5,9 +5,14 @@
 
 ## Bindings for hb-blob.h (HarfBuzz 14.2.1).
 
+import harfbuzz/private/native_types
+
 import harfbuzz/hb_common
 
 export hb_common
+
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb.h>".}
 
 type
   hb_memory_mode_t* {.size: 4.} = enum
@@ -16,9 +21,16 @@ type
     HB_MEMORY_MODE_WRITABLE = 2
     HB_MEMORY_MODE_READONLY_MAY_MAKE_WRITABLE = 3
 
-  hb_blob_t* = object
+  hb_blob_t* {.incompleteStruct.} = object
 
-{.push header: "<harfbuzz/hb.h>", importc, cdecl.}
+when defined(harfbuzzStatic):
+  {.pop.}
+
+const hbApiHeader =
+  when defined(harfbuzzStatic): hbNativeHeader
+  else: "<harfbuzz/hb.h>"
+
+{.push header: hbApiHeader, importc, cdecl.}
 
 proc hb_blob_create*(data: cstring; length: cuint; mode: hb_memory_mode_t;
                      user_data: pointer;

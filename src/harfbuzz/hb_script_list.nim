@@ -5,6 +5,10 @@
 
 ## Script list generated from hb-script-list.h (HarfBuzz 14.2.1). Do not hand-edit.
 
+
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb.h>".}
+
 type
   hb_script_t* {.size: 4.} = enum
     HB_SCRIPT_COMMON = 1517910393
@@ -185,6 +189,9 @@ type
     HB_SCRIPT_TOLONG_SIKI = 1416588403
     HB_SCRIPT_INVALID = 0
     HB_SCRIPT_MAX_VALUE = 2147483647
+
+when defined(harfbuzzStatic):
+  {.pop.}
 
 const
   HB_SCRIPT_MAX_VALUE_SIGNED* = HB_SCRIPT_MAX_VALUE

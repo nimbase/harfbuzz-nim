@@ -5,6 +5,7 @@
 
 ## Bindings for hb-ot-var.h (HarfBuzz 14.2.1).
 
+
 import harfbuzz/hb_common
 import harfbuzz/hb_face
 import harfbuzz/hb_ot_name
@@ -20,12 +21,15 @@ const
   HB_OT_TAG_VAR_AXIS_WIDTH* = hb_tag_t(0x77647468'u32)
   HB_OT_TAG_VAR_AXIS_WEIGHT* = hb_tag_t(0x77676874'u32)
 
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb-ot.h>".}
+
 type
   hb_ot_var_axis_flags_t* {.size: 4.} = enum
     HB_OT_VAR_AXIS_FLAG_HIDDEN = 0x00000001
     HB_OT_VAR_AXIS_FLAG_MAX_VALUE = 0x7FFFFFFF
 
-  hb_ot_var_axis_info_t* = object
+  hb_ot_var_axis_info_t* {.bycopy, completeStruct.} = object
     axis_index*: cuint
     tag*: hb_tag_t
     name_id*: hb_ot_name_id_t
@@ -34,6 +38,9 @@ type
     default_value*: cfloat
     max_value*: cfloat
     reserved*: cuint
+
+when defined(harfbuzzStatic):
+  {.pop.}
 
 {.push header: "<harfbuzz/hb-ot.h>", importc, cdecl.}
 

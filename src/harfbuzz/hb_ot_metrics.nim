@@ -5,11 +5,15 @@
 
 ## Bindings for hb-ot-metrics.h (HarfBuzz 14.2.1).
 
+
 import harfbuzz/hb_common
 import harfbuzz/hb_font
 
 export hb_common
 export hb_font
+
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb-ot.h>".}
 
 type
   hb_ot_metrics_tag_t* {.size: 4.} = enum
@@ -42,6 +46,9 @@ type
     HB_OT_METRICS_TAG_UNDERLINE_SIZE = 0x756E6473
     HB_OT_METRICS_TAG_UNDERLINE_OFFSET = 0x756E646F
     HB_OT_METRICS_TAG_MAX_VALUE = 0x7FFFFFFF
+
+when defined(harfbuzzStatic):
+  {.pop.}
 
 {.push header: "<harfbuzz/hb-ot.h>", importc, cdecl.}
 

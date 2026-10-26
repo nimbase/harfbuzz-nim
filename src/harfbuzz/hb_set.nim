@@ -5,6 +5,7 @@
 
 ## Bindings for hb-set.h (HarfBuzz 14.2.1).
 
+
 import harfbuzz/hb_common
 
 export hb_common
@@ -12,8 +13,14 @@ export hb_common
 const
   HB_SET_VALUE_INVALID* = HB_CODEPOINT_INVALID
 
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb.h>".}
+
 type
-  hb_set_t* = object
+  hb_set_t* {.incompleteStruct.} = object
+
+when defined(harfbuzzStatic):
+  {.pop.}
 
 {.push header: "<harfbuzz/hb.h>", importc, cdecl.}
 

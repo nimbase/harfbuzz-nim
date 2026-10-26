@@ -8,6 +8,8 @@
 ## hb_shape_justify() is experimental (HB_EXPERIMENTAL_API) and not part
 ## of the stable ABI, so it is intentionally not bound.
 
+import harfbuzz/private/native_types
+
 import harfbuzz/hb_common
 import harfbuzz/hb_buffer
 import harfbuzz/hb_font
@@ -16,7 +18,11 @@ export hb_common
 export hb_buffer
 export hb_font
 
-{.push header: "<harfbuzz/hb.h>", importc, cdecl.}
+const hbApiHeader =
+  when defined(harfbuzzStatic): hbNativeHeader
+  else: "<harfbuzz/hb.h>"
+
+{.push header: hbApiHeader, importc, cdecl.}
 
 proc hb_shape*(font: ptr hb_font_t; buffer: ptr hb_buffer_t;
                features: ptr hb_feature_t; num_features: cuint)

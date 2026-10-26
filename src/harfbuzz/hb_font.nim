@@ -5,6 +5,7 @@
 
 ## Bindings for hb-font.h (HarfBuzz 14.2.1).
 
+
 import harfbuzz/hb_common
 import harfbuzz/hb_face
 import harfbuzz/hb_draw
@@ -15,10 +16,13 @@ export hb_face
 export hb_draw
 export hb_paint
 
-type
-  hb_font_funcs_t* = object
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb.h>".}
 
-  hb_font_extents_t* = object
+type
+  hb_font_funcs_t* {.incompleteStruct.} = object
+
+  hb_font_extents_t* {.bycopy, completeStruct.} = object
     ascender*: hb_position_t
     descender*: hb_position_t
     line_gap*: hb_position_t
@@ -127,6 +131,9 @@ type
          paint_funcs: ptr hb_paint_funcs_t; paint_data: pointer;
          palette_index: cuint; foreground: hb_color_t;
          user_data: pointer): hb_bool_t {.cdecl.}
+
+when defined(harfbuzzStatic):
+  {.pop.}
 
 const
   HB_FONT_NO_VAR_NAMED_INSTANCE* = 0xFFFFFFFF'u32

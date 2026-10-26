@@ -5,6 +5,7 @@
 
 ## Bindings for hb-paint.h (HarfBuzz 14.2.1).
 
+
 import harfbuzz/hb_common
 import harfbuzz/hb_blob
 import harfbuzz/hb_draw
@@ -13,8 +14,11 @@ export hb_common
 export hb_blob
 export hb_draw
 
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb.h>".}
+
 type
-  hb_paint_funcs_t* = object
+  hb_paint_funcs_t* {.incompleteStruct.} = object
 
   hb_paint_push_transform_func_t* =
     proc(funcs: ptr hb_paint_funcs_t; paint_data: pointer; xx: cfloat;
@@ -64,7 +68,7 @@ type
          slant: cfloat; extents: ptr hb_glyph_extents_t;
          user_data: pointer): hb_bool_t {.cdecl.}
 
-  hb_color_stop_t* = object
+  hb_color_stop_t* {.bycopy, completeStruct.} = object
     offset*: cfloat
     is_foreground*: hb_bool_t
     color*: hb_color_t
@@ -74,7 +78,7 @@ type
     HB_PAINT_EXTEND_REPEAT = 1
     HB_PAINT_EXTEND_REFLECT = 2
 
-  hb_color_line_t* = object
+  hb_color_line_t* {.bycopy, completeStruct.} = object
     data*: pointer
     get_color_stops*: hb_color_line_get_color_stops_func_t
     get_color_stops_user_data*: pointer
@@ -168,6 +172,9 @@ type
   hb_paint_sweep_gradient_tile_func_t* =
     proc(a0: cfloat; c0: hb_color_t; a1: cfloat; c1: hb_color_t;
          user_data: pointer) {.cdecl.}
+
+when defined(harfbuzzStatic):
+  {.pop.}
 
 const
   HB_PAINT_IMAGE_FORMAT_PNG* = hb_tag_t(0x706E6720'u32)

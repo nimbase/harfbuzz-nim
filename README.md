@@ -77,7 +77,6 @@ For a Unix HarfBuzz installation built without optional dependencies:
 nim c -r -d:harfbuzzStatic \
   --passC:-I/path/to/harfbuzz/include \
   --passC:-DHB_NO_SINGLE_HEADER_ERROR \
-  --passC:-Wno-incompatible-pointer-types \
   --passL:/path/to/harfbuzz/lib/libharfbuzz-subset.a \
   --passL:/path/to/harfbuzz/lib/libharfbuzz.a \
   --passL:-pthread --passL:-lm tests/test_static_linking.nim
@@ -88,6 +87,15 @@ libraries. Include `libharfbuzz-subset` before the core archive when using the
 subset API. If you call ICU APIs, also supply the `libharfbuzz-icu` archive and
 ICU's headers and libraries. Other native dependencies depend on how HarfBuzz
 was built. On Windows, use the corresponding `.lib` paths and MSVC include flags.
+
+Static mode preserves the native C typedef identities for opaque handles,
+records, unions, and enums, so the same bindings also work with `nim cpp` and
+MSVC's stricter type checking. This is selected only by `harfbuzzStatic`;
+the default bindings retain their existing representation.
+
+For caller-supplied shared-library flags or external loaders, define
+`harfbuzzNoPkgConfig` to disable automatic `pkg-config` calls without enabling
+native static type annotations. This leaves the existing C declarations intact.
 
 ### ❤ Contributions & Support
 - 🐛 Found a bug? [Create a new Issue](https://github.com/nimbase/harfbuzz-nim/issues)

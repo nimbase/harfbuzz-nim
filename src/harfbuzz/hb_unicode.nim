@@ -5,12 +5,16 @@
 
 ## Bindings for hb-unicode.h (HarfBuzz 14.2.1).
 
+
 import harfbuzz/hb_common
 
 export hb_common
 
 const
   HB_UNICODE_MAX* = hb_codepoint_t(0x10FFFF'u32)
+
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb.h>".}
 
 type
   hb_unicode_general_category_t* {.size: 4.} = enum
@@ -104,7 +108,7 @@ type
     HB_UNICODE_COMBINING_CLASS_IOTA_SUBSCRIPT = 240
     HB_UNICODE_COMBINING_CLASS_INVALID = 255
 
-  hb_unicode_funcs_t* = object
+  hb_unicode_funcs_t* {.incompleteStruct.} = object
 
   hb_unicode_combining_class_func_t* =
     proc(ufuncs: ptr hb_unicode_funcs_t; unicode: hb_codepoint_t;
@@ -131,6 +135,9 @@ type
     proc(ufuncs: ptr hb_unicode_funcs_t; ab: hb_codepoint_t;
          a: ptr hb_codepoint_t; b: ptr hb_codepoint_t;
          user_data: pointer): hb_bool_t {.cdecl.}
+
+when defined(harfbuzzStatic):
+  {.pop.}
 
 {.push header: "<harfbuzz/hb.h>", importc, cdecl.}
 

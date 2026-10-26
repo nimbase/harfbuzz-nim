@@ -5,6 +5,7 @@
 
 ## Bindings for hb-ot-color.h (HarfBuzz 14.2.1).
 
+
 import harfbuzz/hb_common
 import harfbuzz/hb_blob
 import harfbuzz/hb_face
@@ -17,15 +18,21 @@ export hb_face
 export hb_font
 export hb_ot_name
 
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb-ot.h>".}
+
 type
   hb_ot_color_palette_flags_t* {.size: 4.} = enum
     HB_OT_COLOR_PALETTE_FLAG_DEFAULT = 0x00000000
     HB_OT_COLOR_PALETTE_FLAG_USABLE_WITH_LIGHT_BACKGROUND = 0x00000001
     HB_OT_COLOR_PALETTE_FLAG_USABLE_WITH_DARK_BACKGROUND = 0x00000002
 
-  hb_ot_color_layer_t* = object
+  hb_ot_color_layer_t* {.bycopy, completeStruct.} = object
     glyph*: hb_codepoint_t
     color_index*: cuint
+
+when defined(harfbuzzStatic):
+  {.pop.}
 
 {.push header: "<harfbuzz/hb-ot.h>", importc, cdecl.}
 

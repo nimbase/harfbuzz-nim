@@ -10,8 +10,9 @@
 ## intentionally not bound. Experimental enum values carry no link
 ## dependency and are included.
 
-when not defined(harfbuzzStatic):
+when not defined(harfbuzzStatic) and not defined(harfbuzzNoPkgConfig):
   {.passL: gorge("pkg-config --libs harfbuzz-subset").}
+
 
 import harfbuzz/hb_common
 import harfbuzz/hb_blob
@@ -27,9 +28,12 @@ export hb_set
 export hb_map
 export hb_ot_name
 
+when defined(harfbuzzStatic):
+  {.push importc, header: "<harfbuzz/hb-subset.h>".}
+
 type
-  hb_subset_input_t* = object
-  hb_subset_plan_t* = object
+  hb_subset_input_t* {.incompleteStruct.} = object
+  hb_subset_plan_t* {.incompleteStruct.} = object
 
   hb_subset_flags_t* {.size: 4.} = enum
     HB_SUBSET_FLAGS_DEFAULT = 0x00000000
@@ -59,6 +63,9 @@ type
     HB_SUBSET_SETS_LAYOUT_FEATURE_TAG = 6
     HB_SUBSET_SETS_LAYOUT_SCRIPT_TAG = 7
 
+when defined(harfbuzzStatic):
+  {.pop.}
+
 {.push header: "<harfbuzz/hb-subset.h>", importc, cdecl.}
 
 proc hb_subset_input_create_or_fail*(): ptr hb_subset_input_t
@@ -81,7 +88,7 @@ proc hb_subset_input_old_to_new_glyph_mapping*(
     input: ptr hb_subset_input_t): ptr hb_map_t
 proc hb_subset_input_get_flags*(
     input: ptr hb_subset_input_t): hb_subset_flags_t
-proc hb_subset_input_set_flags*(input: ptr hb_subset_input_t; value: cuint)
+proc hb_subset_input_set_flags*(input: ptr hb_subset_input_t; value: hb_subset_flags_t)
 proc hb_subset_input_pin_all_axes_to_default*(input: ptr hb_subset_input_t;
                                               face: ptr hb_face_t): hb_bool_t
 proc hb_subset_input_pin_axis_to_default*(input: ptr hb_subset_input_t;
